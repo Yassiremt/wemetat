@@ -16,7 +16,7 @@ const StartScreen = ({ navigation }) => {
             at ♥ 🗺 .
           </Title>
           <Image
-            source={require("../image.jpg")}
+            source={require("../assets/image.jpg")}
             style={{
               width: width,
               height: ratio * 801,

@@ -1,6 +1,14 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+  Pressable
+} from "react-native";
 import { Container, Title, Button } from "../components";
+import { Share, BackArrow } from "../svgs";
 import * as Sharing from "expo-sharing";
 const ShareScreen = ({ navigation, route }) => {
   const { uri } = route.params;
@@ -15,12 +23,29 @@ const ShareScreen = ({ navigation, route }) => {
 
   return (
     <Container>
+      <Pressable
+        onPress={() => navigation.goBack()}
+        style={({ pressed }) => [
+          {
+            marginBottom: 30,
+            alignSelf: "flex-start",
+            opacity: pressed ? 0.8 : 1
+          }
+        ]}
+      >
+        <BackArrow />
+      </Pressable>
       <View flex={1} justifyContent={"space-between"}>
         <View style={styles.shadow}>
           <Image source={{ uri: uri }} style={styles.image} />
         </View>
 
-        <Button onPress={() => openShareDialogAsync()}>Share</Button>
+        <Button
+          onPress={() => openShareDialogAsync()}
+          renderIcon={() => <Share />}
+        >
+          Share
+        </Button>
       </View>
     </Container>
   );

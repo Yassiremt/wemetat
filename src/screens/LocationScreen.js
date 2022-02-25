@@ -5,12 +5,14 @@ import {
   StyleSheet,
   Dimensions,
   Image,
-  ScrollView
+  ScrollView,
+  Pressable
 } from "react-native";
 import { theme } from "../theme";
 import ViewShot from "react-native-view-shot";
 import MapView, { Marker } from "react-native-maps";
 import { Container, Title, Input, Button } from "../components";
+import { BackArrow } from "../svgs";
 
 const LocationScreen = ({ navigation }) => {
   const [place, setPlace] = useState({
@@ -37,6 +39,18 @@ const LocationScreen = ({ navigation }) => {
 
   return (
     <Container>
+      <Pressable
+        onPress={() => navigation.goBack()}
+        style={({ pressed }) => [
+          {
+            marginBottom: 30,
+            alignSelf: "flex-start",
+            opacity: pressed ? 0.8 : 1
+          }
+        ]}
+      >
+        <BackArrow />
+      </Pressable>
       <View flex={1} justifyContent={"space-between"}>
         <Input
           val={search}
@@ -57,7 +71,7 @@ const LocationScreen = ({ navigation }) => {
               }}
             >
               <Marker
-                image={require("../heart.png")}
+                image={require("../assets/heart.png")}
                 draggable
                 coordinate={marker}
                 onDragEnd={e => setMarker({ ...e.nativeEvent.coordinate })}

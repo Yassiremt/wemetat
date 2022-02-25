@@ -16,6 +16,7 @@ import {
 } from "../components";
 import ViewShot from "react-native-view-shot";
 import * as ImagePicker from "expo-image-picker";
+import { BackArrow } from "../svgs";
 
 const DetailsScreen = ({ navigation, route }) => {
   const { uri } = route.params;
@@ -52,6 +53,18 @@ const DetailsScreen = ({ navigation, route }) => {
 
   return (
     <Container>
+      <Pressable
+        onPress={() => navigation.goBack()}
+        style={({ pressed }) => [
+          {
+            marginBottom: 30,
+            alignSelf: "flex-start",
+            opacity: pressed ? 0.8 : 1
+          }
+        ]}
+      >
+        <BackArrow />
+      </Pressable>
       <View flex={1} justifyContent={"space-between"}>
         <View>
           <Input
