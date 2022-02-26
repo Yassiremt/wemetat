@@ -10,9 +10,9 @@ import {
 } from "react-native";
 import { theme } from "../theme";
 import ViewShot from "react-native-view-shot";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { Container, Title, Input, Button } from "../components";
-import { BackArrow } from "../svgs";
+import { BackArrow, Smile } from "../svgs";
 
 const LocationScreen = ({ navigation }) => {
   const [place, setPlace] = useState({
@@ -52,15 +52,16 @@ const LocationScreen = ({ navigation }) => {
         <BackArrow />
       </Pressable>
       <View flex={1} justifyContent={"space-between"}>
-        <Input
+        {/* <Input
           val={search}
           setVal={val => setSearch(val)}
           placeholder={"Search for the address here"}
-        />
+        /> */}
         <Title>Hold the marker so you can move it.</Title>
         <View style={styles.shadow}>
           <ViewShot ref={viewShot} options={{ format: "jpg", quality: 0.9 }}>
             <MapView
+              provider={PROVIDER_GOOGLE}
               customMapStyle={theme}
               style={styles.map}
               initialRegion={{
@@ -80,7 +81,9 @@ const LocationScreen = ({ navigation }) => {
           </ViewShot>
         </View>
         <View />
-        <Button onPress={() => capture()}>Next 😀</Button>
+        <Button onPress={() => capture()} renderIcon={() => <Smile />}>
+          Next
+        </Button>
       </View>
     </Container>
   );

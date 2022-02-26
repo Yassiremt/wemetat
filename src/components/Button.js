@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { Pressable, Text, StyleSheet } from "react-native";
+import { Pressable, Text, StyleSheet, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-const Button = ({ onPress, children, renderIcon = () => <Text /> }) => {
+const Button = ({
+  onPress,
+  children,
+  renderIcon = () => <View width={24} />
+}) => {
   const [pressed, setPressed] = useState(false);
   return (
     <Pressable
@@ -22,6 +26,7 @@ const Button = ({ onPress, children, renderIcon = () => <Text /> }) => {
           pressed ? "#f9663aEE" : "#f9663a"
         ]}
       >
+        <View width={24} />
         <Text style={styles.text}>{children}</Text>
         {renderIcon()}
       </LinearGradient>

@@ -9,8 +9,7 @@ const StartScreen = ({ navigation }) => {
   return (
     <Container>
       <View flex={1} justifyContent={"space-between"}>
-        <View />
-        <View>
+        <View flex={1} justifyContent={"space-evenly"}>
           <Title>
             Share with your friends a picture where your love and you first met
             at ♥ 🗺 .
@@ -20,8 +19,7 @@ const StartScreen = ({ navigation }) => {
             style={{
               width: width,
               height: ratio * 801,
-              resizeMode: "contain",
-              marginVertical: 60
+              resizeMode: "contain"
             }}
           />
         </View>

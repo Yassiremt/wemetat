@@ -1,7 +1,7 @@
 import * as React from "react";
-import Svg, { Circle, Path } from "react-native-svg";
+import Svg, { Path } from "react-native-svg";
 
-function Smile(props) {
+function Checked(props) {
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13,15 +13,12 @@ function Smile(props) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="feather feather-smile"
+      className="feather feather-check"
       {...props}
     >
-      <Circle cx={12} cy={12} r={10} />
-      <Path d="M8 14s1.5 2 4 2 4-2 4-2" />
-      <Path d="M9 9L9.01 9" />
-      <Path d="M15 9L15.01 9" />
+      <Path d="M20 6L9 17 4 12" />
     </Svg>
   );
 }
 
-export { Smile };
+export { Checked };

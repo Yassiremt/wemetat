@@ -16,7 +16,7 @@ import {
 } from "../components";
 import ViewShot from "react-native-view-shot";
 import * as ImagePicker from "expo-image-picker";
-import { BackArrow } from "../svgs";
+import { BackArrow, Checked } from "../svgs";
 
 const DetailsScreen = ({ navigation, route }) => {
   const { uri } = route.params;
@@ -115,7 +115,9 @@ const DetailsScreen = ({ navigation, route }) => {
             </ViewShot>
           </View>
         </View>
-        <Button onPress={() => captureFinal()}>Done ✔</Button>
+        <Button onPress={() => captureFinal()} renderIcon={() => <Checked />}>
+          Done
+        </Button>
       </View>
     </Container>
   );

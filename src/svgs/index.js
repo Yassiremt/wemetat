@@ -4,3 +4,4 @@ export * from "./MapPin";
 export * from "./Map";
 export * from "./Share";
 export * from "./Smile";
+export * from "./Checked";
