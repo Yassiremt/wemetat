@@ -7,7 +7,7 @@ const Title = ({ children }) => {
       style={[
         styles.titleStyle,
         {
-          color: "#494949"
+          color: "#323232"
         }
       ]}
     >

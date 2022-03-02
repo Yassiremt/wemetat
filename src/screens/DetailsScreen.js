@@ -77,6 +77,7 @@ const DetailsScreen = ({ navigation, route }) => {
             val={loveName}
             setVal={val => setLoveName(val)}
           />
+          <View marginBottom={15} />
           <View style={styles.shadow}>
             <ViewShot ref={viewShot} options={{ format: "jpg", quality: 0.9 }}>
               <Image source={{ uri: uri }} style={styles.image} />

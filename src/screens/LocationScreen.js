@@ -6,13 +6,14 @@ import {
   Dimensions,
   Image,
   ScrollView,
-  Pressable
+  Pressable,
+  Modal
 } from "react-native";
 import { theme } from "../theme";
 import ViewShot from "react-native-view-shot";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
-import { Container, Title, Input, Button } from "../components";
-import { BackArrow, Smile } from "../svgs";
+import { Container, Title, Input, Button, PlacesModal } from "../components";
+import { BackArrow, Smile, MapPin } from "../svgs";
 
 const LocationScreen = ({ navigation }) => {
   const [place, setPlace] = useState({
@@ -26,9 +27,10 @@ const LocationScreen = ({ navigation }) => {
     longitude: 2.2945
   });
   const [captured, setCaptured] = useState("");
-  const [final, setFinal] = useState("");
   const [search, setSearch] = useState("");
+  const [isModalVisible, setModalVisible] = useState(false);
   const viewShot = useRef(null);
+  const mapRef = useRef(null);
 
   const capture = () => {
     viewShot.current.capture().then(uri => {
@@ -39,28 +41,48 @@ const LocationScreen = ({ navigation }) => {
 
   return (
     <Container>
-      <Pressable
-        onPress={() => navigation.goBack()}
-        style={({ pressed }) => [
-          {
-            marginBottom: 30,
-            alignSelf: "flex-start",
-            opacity: pressed ? 0.8 : 1
-          }
-        ]}
+      <Modal
+        backdropColor={"#fff7f8"}
+        animationType="slide"
+        visible={isModalVisible}
       >
-        <BackArrow />
-      </Pressable>
+        <PlacesModal
+          close={() => setModalVisible(false)}
+          setMarker={val => {
+            setMarker(val);
+            mapRef.current.animateToRegion({
+              ...val,
+              latitudeDelta: 0.005,
+              longitudeDelta: 0.005
+            });
+          }}
+        />
+      </Modal>
+      <View flexDirection={"row"} alignItems={"center"} marginBottom={30}>
+        <Pressable
+          onPress={() => navigation.goBack()}
+          style={({ pressed }) => [
+            {
+              opacity: pressed ? 0.8 : 1
+            }
+          ]}
+        >
+          <BackArrow />
+        </Pressable>
+        <Pressable
+          onPress={() => setModalVisible(true)}
+          style={styles.searchBar}
+        >
+          <Text style={styles.searchText}>Search for address ...</Text>
+          <MapPin />
+        </Pressable>
+      </View>
       <View flex={1} justifyContent={"space-between"}>
-        {/* <Input
-          val={search}
-          setVal={val => setSearch(val)}
-          placeholder={"Search for the address here"}
-        /> */}
         <Title>Hold the marker so you can move it.</Title>
         <View style={styles.shadow}>
           <ViewShot ref={viewShot} options={{ format: "jpg", quality: 0.9 }}>
             <MapView
+              ref={mapRef}
               provider={PROVIDER_GOOGLE}
               customMapStyle={theme}
               style={styles.map}
@@ -104,6 +126,29 @@ const styles = StyleSheet.create({
     shadowRadius: 1.0,
     elevation: 1,
     borderWidth: 0
+  },
+  searchBar: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.0,
+    elevation: 0.5,
+
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFFFFFBB",
+    flex: 1,
+    marginLeft: 15,
+    paddingHorizontal: 15
+  },
+  searchText: {
+    fontFamily: "Ubuntu_500Medium",
+    color: "#f74440",
+    paddingVertical: 12,
+    flex: 1
   }
 });
 
