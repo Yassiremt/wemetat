@@ -1061,10 +1061,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@expo-google-fonts/ubuntu@^0.2.2":
+"@expo-google-fonts/roboto@^0.2.2":
   version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/ubuntu/-/ubuntu-0.2.2.tgz#713c2b79cb8c4e3a0b1ba303e4f37484919557d9"
-  integrity sha512-x9TAJWd/SmGoOMO/sb2MF4uzz3OELGxVHB2k2I2TRgO+aDHEnZYrr+B0c8QSSfMlWwizZLSOcmB+MTyVU0lgUw==
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/roboto/-/roboto-0.2.2.tgz#0a9f4685e8d02bdb0d2d2919c102f531bdb353d4"
+  integrity sha512-qP0oZsR8rTID5T9wEXSt9yCYMnKYKlvIlrJGGpd+t71Obt2J51+51PBpvxd5c8fpABEru3zx6ENmpU9lzwr8zw==
 
 "@expo/config-plugins@4.0.18", "@expo/config-plugins@^4.0.2":
   version "4.0.18"
@@ -2684,6 +2684,18 @@ expo-font@~10.0.4, expo-font@~10.0.5:
   dependencies:
     fontfaceobserver "^2.1.0"
 
+expo-image-loader@~3.1.0:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/expo-image-loader/-/expo-image-loader-3.1.1.tgz#f88d94e66c5a102f15d858973c03b92e10662575"
+  integrity sha512-ZX4Bh3K4CCX1aZflnmbOgFNLS+c0/GUys4wdvqxO+4A4KU1NNb3jE7RVa/OFYNPDcGhEw20c1QjyE/WsVURJpg==
+
+expo-image-manipulator@~10.2.0:
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/expo-image-manipulator/-/expo-image-manipulator-10.2.1.tgz#6fd0db248f10a5e99b16e1f53d382ca77e660b4a"
+  integrity sha512-0klgPMn8fIUkbWpRVT0LVCtq0ozzm3gO60jZEcJPofJRQWDKuv3Rcf0+8pTqpn45J53eAGsuZ72/Yj0AJqaedQ==
+  dependencies:
+    expo-image-loader "~3.1.0"
+
 expo-image-picker@~12.0.1:
   version "12.0.2"
   resolved "https://registry.yarnpkg.com/expo-image-picker/-/expo-image-picker-12.0.2.tgz#4789c5419208ff8ede557784368a7f18f3878c30"
@@ -2701,6 +2713,13 @@ expo-linear-gradient@~11.0.3:
   version "11.0.3"
   resolved "https://registry.yarnpkg.com/expo-linear-gradient/-/expo-linear-gradient-11.0.3.tgz#bc559b9a251c9dc8aa37fb6c66c7a497fe92993c"
   integrity sha512-LuzTM5+iEHCQfC2TBHAAI+ZjPvf0TvGiA7GYMsyTnakGA2r4JtsV8Ah/miQPKhfG06jLDOo4grUoSMGqbmSrEw==
+
+expo-media-library@~14.0.0:
+  version "14.0.1"
+  resolved "https://registry.yarnpkg.com/expo-media-library/-/expo-media-library-14.0.1.tgz#b1a2ce3699edf6b5f561d32812e608ba064ba43f"
+  integrity sha512-a7NGFxZvns81y0fRZJsBROXFWKtyEMaodw+x32IPNhKLUAn+X1ggfBS8FbNpUs3bA4ZvhjFQBn59dxPfcHHxEg==
+  dependencies:
+    "@expo/config-plugins" "^4.0.2"
 
 expo-modules-autolinking@0.5.5, expo-modules-autolinking@~0.5.1:
   version "0.5.5"
@@ -2720,11 +2739,6 @@ expo-modules-core@0.6.5:
   dependencies:
     compare-versions "^3.4.0"
     invariant "^2.2.4"
-
-expo-react-native-shadow@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/expo-react-native-shadow/-/expo-react-native-shadow-1.0.3.tgz#70e40b06ae13313e88275bb98e0d5c4d800a7315"
-  integrity sha512-0CnsKAzfO9cMlztyijiR2tz+D2Jilxt/3Uq4ByhQoG8HckSZG8tE+IHO5axoRkDyaK/gUefwOMB1e4fVsUAt/w==
 
 expo-sharing@~10.1.0:
   version "10.1.1"

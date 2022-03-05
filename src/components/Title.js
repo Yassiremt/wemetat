@@ -20,9 +20,9 @@ export { Title };
 
 const styles = StyleSheet.create({
   titleStyle: {
-    fontFamily: "Ubuntu_500Medium",
-    lineHeight: 33,
-    fontSize: 16,
+    fontFamily: "Roboto_500Medium",
+    lineHeight: 28,
+    fontSize: 15,
     textAlign: "center"
   }
 });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -10,17 +10,31 @@ import {
 import { Container, Title, Button } from "../components";
 import { Share, BackArrow } from "../svgs";
 import * as Sharing from "expo-sharing";
+import * as MediaLibrary from "expo-media-library";
+import * as ImageManipulator from "expo-image-manipulator";
 const ShareScreen = ({ navigation, route }) => {
   const { uri } = route.params;
+  const [status, requestPermission] = MediaLibrary.usePermissions();
+  const [saved, setSaved] = useState("");
 
   const openShareDialogAsync = async () => {
     if (Platform.OS === "web") {
       alert(`Uh oh, sharing isn't available on your platform`);
       return;
     }
-    await Sharing.shareAsync(uri);
+    const imageProc = await ImageManipulator.manipulateAsync(uri);
+    await Sharing.shareAsync(imageProc.uri);
   };
-
+  const saveToGallery = async () => {
+    requestPermission();
+    if (status.granted) {
+      try {
+        const result = await MediaLibrary.createAssetAsync(uri);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
   return (
     <Container>
       <Pressable
@@ -39,13 +53,15 @@ const ShareScreen = ({ navigation, route }) => {
         <View style={styles.shadow}>
           <Image source={{ uri: uri }} style={styles.image} />
         </View>
-
-        <Button
-          onPress={() => openShareDialogAsync()}
-          renderIcon={() => <Share />}
-        >
-          Share
-        </Button>
+        <View>
+          <Button
+            onPress={() => openShareDialogAsync()}
+            renderIcon={() => <Share />}
+          >
+            Share
+          </Button>
+          <Button onPress={() => saveToGallery()}>Save to Gallery</Button>
+        </View>
       </View>
     </Container>
   );
@@ -62,7 +78,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1
     },
-    shadowOpacity: 0.18,
+    shadowOpacity: 0.08,
     shadowRadius: 1.0,
     elevation: 1,
     borderWidth: 0

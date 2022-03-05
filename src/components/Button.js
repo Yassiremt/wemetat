@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
     textAlign: "center",
-    fontFamily: "Ubuntu_500Medium",
+    fontFamily: "Roboto_500Medium",
     fontSize: 16,
     marginRight: 10
   }

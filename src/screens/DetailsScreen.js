@@ -143,9 +143,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 60
   },
   name: {
-    fontFamily: "Ubuntu_500Medium",
+    fontFamily: "Roboto_500Medium",
     paddingTop: 5,
-    fontSize: 15,
+    fontSize: 13,
     color: "#404040"
   },
   shadow: {
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1
     },
-    shadowOpacity: 0.18,
+    shadowOpacity: 0.08,
     shadowRadius: 1.0,
     elevation: 1,
     borderWidth: 0

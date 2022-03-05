@@ -16,7 +16,7 @@ const Input = ({ val, setVal, placeholder }) => {
 
 const styles = StyleSheet.create({
   input: {
-    fontFamily: "Ubuntu_500Medium",
+    fontFamily: "Roboto_500Medium",
     borderWidth: 1.8,
     borderColor: "#f74440",
     height: 45,

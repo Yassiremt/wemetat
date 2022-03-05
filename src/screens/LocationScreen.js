@@ -38,7 +38,6 @@ const LocationScreen = ({ navigation }) => {
       navigation.navigate("Details", { uri });
     });
   };
-
   return (
     <Container>
       <Modal
@@ -50,6 +49,7 @@ const LocationScreen = ({ navigation }) => {
           close={() => setModalVisible(false)}
           setMarker={val => {
             setMarker(val);
+            setModalVisible(false);
             mapRef.current.animateToRegion({
               ...val,
               latitudeDelta: 0.005,
@@ -83,7 +83,7 @@ const LocationScreen = ({ navigation }) => {
           <ViewShot ref={viewShot} options={{ format: "jpg", quality: 0.9 }}>
             <MapView
               ref={mapRef}
-              provider={PROVIDER_GOOGLE}
+              // provider={PROVIDER_GOOGLE}
               customMapStyle={theme}
               style={styles.map}
               initialRegion={{
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1
     },
-    shadowOpacity: 0.18,
+    shadowOpacity: 0.08,
     shadowRadius: 1.0,
     elevation: 1,
     borderWidth: 0
@@ -133,21 +133,21 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1
     },
-    shadowOpacity: 0.18,
+    shadowOpacity: 0.08,
     shadowRadius: 1.0,
-    elevation: 0.5,
+    elevation: 0.8,
 
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#FFFFFFBB",
+    backgroundColor: "#FFFFFF",
     flex: 1,
     marginLeft: 15,
     paddingHorizontal: 15
   },
   searchText: {
-    fontFamily: "Ubuntu_500Medium",
+    fontFamily: "Roboto_500Medium",
     color: "#f74440",
-    paddingVertical: 12,
+    paddingVertical: 15,
     flex: 1
   }
 });

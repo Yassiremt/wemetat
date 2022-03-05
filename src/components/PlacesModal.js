@@ -10,7 +10,7 @@ import {
 import axios from "axios";
 import { Input } from "./Input";
 import { Button } from "./Button";
-const GOOGLE_API_KEY = "YOUR_API_KEY";
+const GOOGLE_API_KEY = "Your api key";
 
 const debounce = (func, wait, immediate) => {
   var timeout;
@@ -50,7 +50,6 @@ const PlacesModal = props => {
           `&language=en`
       )
       .then(response => {
-        console.log(response.data.predictions);
         setPredictions(response.data.predictions);
       })
       .catch(error => {
@@ -60,6 +59,9 @@ const PlacesModal = props => {
 
   const renderRow = ({ item }) => (
     <Pressable
+      style={({ pressed }) => [
+        { backgroundColor: pressed ? "#f7444022" : "#f7444030" }
+      ]}
       onPress={() => {
         const place_id = item.place_id;
         var config = {
@@ -76,14 +78,13 @@ const PlacesModal = props => {
           .then(function(response) {
             const loc = response.data.result.geometry.location;
             setMarker({ longitude: loc.lng, latitude: loc.lat });
-            close();
           })
           .catch(function(error) {
             console.log(error);
           });
       }}
     >
-      <View style={[styles.spaceBetweenRow, { backgroundColor: "#f74440" }]}>
+      <View style={[styles.spaceBetweenRow]}>
         <Text style={styles.itemStyle}>{item.description}</Text>
       </View>
     </Pressable>
@@ -96,11 +97,11 @@ const PlacesModal = props => {
           setTerm(term);
         }}
         autoFocus
-        placeholder={"Search for address"}
+        placeholder={"Search for address ..."}
       />
       <FlatList
         style={styles.flatListStyle}
-        ItemSeparatorComponent={() => <View style={styles.line} />}
+        ItemSeparatorComponent={() => <View style={styles.space} />}
         keyExtractor={item => item.place_id}
         contentContainerStyle={styles.listStyle}
         data={predictions}
@@ -132,7 +133,7 @@ const styles = {
   inputStyle: {
     color: "#CED3D8",
 
-    fontFamily: "Ubuntu_500Medium",
+    fontFamily: "Roboto_500Medium",
     fontSize: 20,
     flex: 1
   },
@@ -146,9 +147,9 @@ const styles = {
     overflow: "hidden"
   },
   itemStyle: {
-    fontFamily: "Ubuntu_500Medium",
-    color: "white",
-    fontSize: 15
+    fontFamily: "Roboto_400Regular",
+    color: "#232323",
+    fontSize: 14
   },
   centeredInRow: {
     justifyContent: "center",
@@ -161,10 +162,8 @@ const styles = {
     paddingHorizontal: 12,
     paddingVertical: 10
   },
-  line: {
-    backgroundColor: "#CED3D8",
-    width: "100%",
-    height: 0.5
+  space: {
+    marginVertical: 1
   }
 };
 
