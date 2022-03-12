@@ -1,6 +1,6 @@
 # WE MET AT
 
-This is an Expo app that allows you to generate a picture where you met your love on the map, add pictures and pictures of the couple and share it on social media.
+This is an Expo app that allows you to generate a picture where you met your love on the map, add pictures of the couple and share it on social media.
 
 # For testing the app
 
