@@ -94,11 +94,15 @@ const LocationScreen = ({ navigation }) => {
               }}
             >
               <Marker
-                image={require("../assets/heart.png")}
                 draggable
                 coordinate={marker}
                 onDragEnd={e => setMarker({ ...e.nativeEvent.coordinate })}
-              />
+              >
+                <Image
+                  source={require("../assets/heart.png")}
+                  style={{ height: 45, width: 45 }}
+                />
+              </Marker>
             </MapView>
           </ViewShot>
         </View>
