@@ -4,7 +4,7 @@ This is an Expo app that allows you to generate a picture where you met your lov
 
 # For testing the app
 
-You should get your api key and replace it in
+For the autocomplete to work you should get your google places api key and replace it in
 
     src/components/PlacesModal.js
 
